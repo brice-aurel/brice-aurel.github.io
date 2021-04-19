@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="bg-warning pt-5 pb-5">
-        <h1 class="text-center">Our products ({{ $category->products->count() }})</h1>
+        <h1 class="text-center">Our products ({{ $products->count() }})</h1>
     </div>
 
     <div class="container py-4">
@@ -20,8 +20,8 @@
             <!--End categories star -->
 
             <!-- Show all products -->
-            @if (!$category->products->isEmpty())
-                @foreach ($category->products as $product)
+            @if (!$products->isEmpty())
+                @foreach ($products as $product)
                     <div class="col-12 col-md-3 my-2" id="myTable">
                         <div class="card">
                             <img src="{{ asset('images/' . $product->image) }}" alt="{{$product->name}}" class="card-img-top">
