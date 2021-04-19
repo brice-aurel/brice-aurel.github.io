@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="bg-warning pt-5 pb-5">
-        <h1 class="text-center">Our products ({{ $products->count() }})</h1>
+        <h1 class="text-center">Our products ({{ $category->products->count() }})</h1>
     </div>
 
     <div class="container py-4">
@@ -13,20 +13,18 @@
                 <h1 class="h4 text-uppercase">Categories</h1>
                 <ul class="list-group">
                     @foreach ($categories as $category)
-                        <li class="list-group-item list-group-item-action"><a
-                                href="{{ route('category.show', $category) }}">{{ $category->name }}</a></li>
+                        <li class="list-group-item list-group-item-action"><a href="{{ route('category.show', $category) }}">{{ $category->name }}</a></li>
                     @endforeach
                 </ul>
             </div>
             <!--End categories star -->
 
             <!-- Show all products -->
-            @if (!$products->isEmpty())
-                @foreach ($products as $product)
+            @if (!$category->products->isEmpty())
+                @foreach ($category->products as $product)
                     <div class="col-12 col-md-3 my-2" id="myTable">
                         <div class="card">
-                            <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}"
-                                class="card-img-top">
+                            <img src="{{ asset('images/' . $product->image) }}" alt="{{$product->name}}" class="card-img-top">
                             <div class="card-body">
                                 <p class="card-title">{{ $product->name }}</p>
                                 <p class="text-muted">Category : {{ $product->category->name }}</p>

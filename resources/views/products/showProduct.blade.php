@@ -1,24 +1,25 @@
 @extends('index')
 
 @section('content')
-    <div class="container my-3">
+    <div class="container" style="margin: 5% 0% 4% 15%;">
         <div class="row">
             <!-- categories star -->
             <div class="col-12 col-md-3 mb-2">
                 <h1 class="h4 text-uppercase">Categories</h1>
                 <ul class="list-group">
                     @foreach ($categories as $category)
-                        <li class="list-group-item list-group-item-action"><a href="#">{{ $category->name }}</a></li>
+                        <li class="list-group-item list-group-item-action"><a href="{{ route('category.show', $category) }}">{{ $category->name }}</a></li>
                     @endforeach
                 </ul>
             </div>
             <!--End categories star -->
 
+            <!-- product list -->
             <div class="col-12 col-md-3 mb-2">
                 <img src="{{ asset('images/' . $product->image) }}" alt="$product->image" class="w-100 d-block rounded	">
             </div>
 
-            <div class="col-12 col-md-6 mb-2">
+            <div class="col-12 col-md-6">
                 <div class="ml-5">
                     <h1 class="h2">{{ $product->name }}</h1>
 					<p class="lead">category: <b>{{ $product->category->name }}</b></p>
@@ -36,6 +37,7 @@
                     </div>
                 </div>
             </div>
+            <!--End product list -->
         </div>
     </div>
 @endsection

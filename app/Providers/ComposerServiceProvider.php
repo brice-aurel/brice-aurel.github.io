@@ -24,8 +24,11 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer(['index', 'products.indexProducts', 'products.showProduct'], function ($view) {
-            $view->with('categories', Category::all());
-        });
+        view()->composer(
+            ['index', 'products.indexProducts', 'products.showProduct', 'Categories.showCategory'],
+            function ($view) {
+                $view->with('categories', Category::all());
+            }
+        );
     }
 }
