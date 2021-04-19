@@ -19,6 +19,10 @@ class Product extends Model
     }
 
     public function tags() {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class, '');
+    }
+
+    public function view_other_products() {
+        return $this->belongsToMany(Product::class, 'view_other_products', 'product_id', 'view_other_product_id');
     }
 }

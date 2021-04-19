@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="bg-warning pt-5 pb-5">
-        <h1 class="text-center">Our products ({{ $products->count() $products->name }})</h1>
+        <h1 class="text-center">Our products ({{ $products->count() }})</h1>
     </div>
 
     <div class="container py-4">

@@ -39,5 +39,25 @@
             </div>
             <!--End product list -->
         </div>
+        <div class="row">
+            <h3 class="text-center h1 mt-3">Vous aimerez aussi</h3>
+        </div>
+        <div class="row">
+            @foreach ($product->view_other_products as $product_view)
+            <div class="col-12 col-md-3 my-2" id="myTable">
+                <div class="card">
+                    <img src="{{ asset('images/' . $product_view->image) }}" alt="{{ $product_view->name }}"
+                        class="card-img-top">
+                    <div class="card-body">
+                        <p class="card-title">{{ $product_view->name }}</p>
+                        <p class="text-muted">Category : {{ $product_view->category->name }}</p>
+                        <p class="text-danger police">{{ number_format($product_view->price, 0) }} CFA</p>
+                        <a href="{{ route('product.show', $product_view) }}" class="text-muted police"><i
+                                class="fas fa-eye text-warning"></i> Details</a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
     </div>
 @endsection
