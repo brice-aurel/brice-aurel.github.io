@@ -45,10 +45,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        $products = Product::where('category_id', $category->id)->get();
-        return view('Categories.showCategory', compact('products'));
+        return view('products.indexProducts', ['products' => Product::where('category_id', $id)->with('category')->get()]);
     }
 
     /**
