@@ -23,17 +23,21 @@
             <div class="col-12 col-md-6">
                 <div class="ml-5">
                     <h1 class="h2">{{ $product->name }}</h1>
+                    <hr>
                     <p class="lead">category: <b>{{ $product->category->name }}</b></p>
                     <div class="mt-3 ml-2 lead">
-                        <form action="">
-                            <p class="lead my-3">price: <b>{{ number_format($product->price, 0, ',', '') }} CFA</b></p>
+                        <p class="lead my-3">price: <b>{{ number_format($product->price, 0, ',', '') }} CFA</b></p>
+                        <form action="{{ route('cart_add', $product) }}" method="POST" id="shopping_cart">
+                            @csrf
                             <div class="form-group row">
                                 <label for="Quantity" class="d-none d-md-block col-12 col-md-2">Quantity</label>
-                                <input type="number" class="form-control col-11 col-md-2 mb-2 mx-3" value="1" required>
+                                <input type="number" name="qte" class="form-control col-11 col-md-2 mb-2 mx-3" value="1" required>
                             </div>
-                            <a href="#" class="btn btn-info form-control col-12 col-md-3 mb-3">Add to cart <i
-                                    class="fas fa-shopping-cart"></i></a>
                         </form>
+                        <div class="from-group my-2">
+                            <button type="submit" class="btn btn-info form-control" form="shopping_cart">Add to cart <i
+                                    class="fas fa-shopping-cart"></i></button>
+                        </div>
                         <p>{{ $product->description }}</p>
                     </div>
                 </div>

@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use Cart;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
     // add new product at cart
-    public function add() {
+    public function add(Request $request) {
+        $product = Product::find($request->id);
 
         Cart::add(array(
-            'id' => 456, // inique row ID
-            'name' => 'Sample Item',
-            'price' => 67.99,
-            'quantity' => 2,
+            'id' => $product->id, // inique row ID
+            'name' => $product->name,
+            'price' => $product->price,
+            'quantity' => $request->qte,
             'attributes' => array()
         ));
         return redirect()->route('cart_index');
