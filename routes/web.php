@@ -14,6 +14,6 @@ Route::resource('product', ProductController::class);
 
 Route::resource('category', CategoryController::class);
 
-Route::post('/panier/add{id}', [CartController::class, 'add'])->name('cart_add');
+Route::post('/panier/add/{id}', [CartController::class, 'add'])->name('cart_add');
 
 Route::get('/panier', [CartController::class, 'index'])->name('cart_index');

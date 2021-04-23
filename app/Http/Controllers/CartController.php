@@ -8,8 +8,9 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    // add new product at cart
+    // add new product to cart
     public function add(Request $request) {
+       
         $product = Product::find($request->id);
 
         Cart::add(array(
@@ -17,13 +18,15 @@ class CartController extends Controller
             'name' => $product->name,
             'price' => $product->price,
             'quantity' => $request->qte,
-            'attributes' => array()
+            'attributes' => array('photo' => $product->image)
         ));
         return redirect()->route('cart_index');
     }
 
     public function index() {
         $cartCollection = Cart::getContent();
-        dd($cartCollection);
+        $total = Cart::getTotal();
+        $tva = ($total * 20)/100;
+        return view('Cart.indexCart', compact('cartCollection', 'total', 'tva'));
     }
 }
