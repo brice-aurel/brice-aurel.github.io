@@ -10,6 +10,6 @@ class OrderController extends Controller
     public function store()
     {
         Order::create();
-        return view('listCartView');
+        return view('Cart.listCartView');
     }
 }
