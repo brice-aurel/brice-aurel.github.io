@@ -17,7 +17,7 @@
 
             <!-- product list -->
             <div class="col-12 col-md-3 mb-2">
-                <img src="{{ asset('images/' . $product->image) }}" alt="$product->image" class="w-100 d-block rounded	">
+                <img src="{{ $product->image }}" alt="" class="w-100 d-block rounded	">
             </div>
 
             <div class="col-12 col-md-6">
@@ -52,7 +52,7 @@
                 @foreach ($product->view_other_products as $product_view)
                     <div class="col-12 col-md-3 my-2" id="myTable">
                         <div class="card">
-                            <img src="{{ asset('images/' . $product_view->image) }}" alt="{{ $product_view->name }}"
+                            <img src="{{ $product_view->image }}" alt=""
                                 class="card-img-top">
                             <div class="card-body">
                                 <p class="card-title">{{ $product_view->name }}</p>

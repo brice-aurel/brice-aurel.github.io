@@ -16,18 +16,20 @@
             <li class="dropdown-item"><a href="#" class="">Propos</a></li>
           </ul>
         </li>
-        <li class="nav-item"><a href="{{ route('cart_index') }}" class="nav-link {{ route_active('cart_index')}}">Panier</a></li>
+        <li class="nav-item"><a href="{{ route('cart_index') }}" class="nav-link {{ route_active('cart_index')}}">Panier <span class="badge bage-pill badge-dark"> {{Cart::getContent()->count()}} </span></a></li>
         <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
       </ul>
     </nav>
-    <form action="" class="ml-auto">
-      <div class="input-group">
-        <input type="search" name="search" class="form-control" placeholder="Search..." id="myInput">
-        <div class="input-group-append">
-          <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+    @if (Route::is('product.index'))
+      <form action="" class="ml-auto">
+        <div class="input-group">
+          <input type="search" name="search" class="form-control" placeholder="Search..." id="myInput">
+          <div class="input-group-append">
+            <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    @endif
   </div>
 </header>
 <!-- ======= End Header ========== -->

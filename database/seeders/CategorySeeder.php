@@ -14,20 +14,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::create([
-        	'name' => 'Cahiers'
-        ]);
-
-        Category::create([
-        	'name' => 'Accessoires'
-        ]);
-
-        Category::create([
-        	'name' => 'Albums Musique'
-        ]);
-
-        Category::create([
-            'name' => 'Autres'
-        ]);
+        Category::factory()->count(5)->create();
     }
 }
