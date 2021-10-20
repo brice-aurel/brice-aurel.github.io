@@ -13,7 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('products.indexProducts', ['products' => Product::inRandomOrder(10)->with('category')->simplePaginate(10)]);
+        return view('products.indexProducts', ['products' => Product::inRandomOrder(10)->with('category')->paginate(10)]);
     }
 
     /**
