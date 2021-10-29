@@ -18,7 +18,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        return view('products.indexProducts', ['products' => Product::where('category_id', $id)->with('category')->simplePaginate(10)]);
+        return view('products.indexProducts', ['products' => Product::where('category_id', $id)->with('category')->paginate(10)]);
     }
 
 }

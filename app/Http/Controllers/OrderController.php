@@ -19,7 +19,7 @@ class OrderController extends Controller
         foreach (Cart::getContent() as $product) {
             $products['product_' . $i][] = $product->name;
             $products['product_' . $i][] = $product->price;
-            $products['product_' . $i][] = $product->qte;
+            $products['product_' . $i][] = $product->quantity;
             $i++;
         }
 

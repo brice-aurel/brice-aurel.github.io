@@ -23,3 +23,8 @@ Route::get('/videPanier', function(){
 
 Route::post('payment', 'App\Http\Controllers\OrderController@store')->name('order.store');
 Route::get('/merci', 'App\Http\Controllers\OrderController@thankyou')->name('order.thankyou');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
