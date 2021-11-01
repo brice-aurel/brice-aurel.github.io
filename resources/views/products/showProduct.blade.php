@@ -38,7 +38,7 @@
                             <button type="submit" class="btn btn-info form-control" form="shopping_cart">Add to cart <i
                                     class="fas fa-shopping-cart"></i></button>
                         </div>
-                        <p>{{ $product->description }}</p>
+                        <p>{!! $product->description !!}</p>
                     </div>
                 </div>
             </div>
