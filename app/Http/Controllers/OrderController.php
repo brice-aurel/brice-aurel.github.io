@@ -24,7 +24,7 @@ class OrderController extends Controller
         }
 
         $order->products = serialize($products);
-        $order->user_id = 2;
+        $order->user_id = auth()->user()->id;
         $order->save();
 
         Cart::clear();

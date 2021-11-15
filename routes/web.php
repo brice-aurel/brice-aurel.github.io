@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use TCG\Voyager\Facades\Voyager;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,8 @@ use App\Http\Controllers\CategoryController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index');
+})->name('index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -26,17 +27,25 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/category/{id}', [CategoryController::class, 'show'])->name('category.show');
+//Route for the Categories
+Route::resource('/category', CategoryController::class);
 
-Route::get('/product', [ProductController::class, 'index'])->name('product.index');
-Route::get('/product/{id}', [ProductController::class, 'show'] )->name('product.show');
+//Route for the products
+Route::resource('/product', ProductController::class);
 
-Route::get('panier', [CartController::class, 'add'])->name('cart_add');
-Route::delete('/panier/add/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
+//Route for the Cart
+Route::middleware(['auth'])->group(function () {
+    Route::post('panier/add/{id}', [CartController::class, 'add'])->name('cart_add');
+    Route::get('/panier', [CartController::class, 'index'])->name('cart_index');
+    Route::delete('/panier/{rowid}', [CartController::class, 'destroy'])->name('cart.destroy');
+});
 
-Route::post('/payement', 'App\Http\Controllers\OrderController@store')->name('order.store');
-Route::get('/merci', 'App\Http\Controllers\OrderController@thankyou')->name('order.thankyou');
+//Route for the order
+Route::middleware(['auth'])->group(function () {
+    Route::post('/payement', 'App\Http\Controllers\OrderController@store')->name('order.store');
+    Route::get('/merci', 'App\Http\Controllers\OrderController@thankyou')->name('order.thankyou');
+});
 
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });

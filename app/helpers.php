@@ -11,6 +11,6 @@ if (! function_exists('route_active')) {
 if (! function_exists('getPrice')) {
     function getPrice($price) {
 
-        return number_format($price, 2, '.', ' '). 'FCFA';
+        return number_format($price, 2, '.', ' '). ' FCFA';
     }
 }

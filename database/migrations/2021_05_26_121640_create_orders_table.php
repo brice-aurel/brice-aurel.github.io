@@ -17,8 +17,9 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->integer('amount');
             $table->text('products');
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
+            Schema::enableForeignKeyConstraints();
         });
     }
 
